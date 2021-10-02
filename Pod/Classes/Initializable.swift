@@ -8,33 +8,33 @@
 import Foundation
 
 internal protocol InitializableClass: class {
-    init()
+  init()
 }
 
 extension InitializableClass {
-    init(_ block: (Self) -> Void) {
-        self.init()
-        block(self)
-    }
-
-    @discardableResult func with(_ block: (Self) -> Void) -> Self {
-        block(self)
-        return self
-    }
+  init(_ block: (Self) -> Void) {
+    self.init()
+    block(self)
+  }
+  
+  @discardableResult func with(_ block: (Self) -> Void) -> Self {
+    block(self)
+    return self
+  }
 }
 
 public protocol InitializableStruct {
-    init()
+  init()
 }
 
 public extension InitializableStruct {
-    init(_ block: (inout Self) -> Void) {
-        self.init()
-        block(&self)
-    }
-
-    @discardableResult mutating func with(_ block: (inout Self) -> Void) -> Self {
-        block(&self)
-        return self
-    }
+  init(_ block: (inout Self) -> Void) {
+    self.init()
+    block(&self)
+  }
+  
+  @discardableResult mutating func with(_ block: (inout Self) -> Void) -> Self {
+    block(&self)
+    return self
+  }
 }
