@@ -10,6 +10,8 @@ import UIKit
 @objcMembers
 public class SideMenuManager: NSObject {
 
+    public static var rootViewController: UIViewController?
+
     final private class SideMenuPanGestureRecognizer: UIPanGestureRecognizer {}
     final private class SideMenuScreenEdgeGestureRecognizer: UIScreenEdgePanGestureRecognizer {}
 
@@ -215,7 +217,7 @@ private extension SideMenuManager {
     }
 
     var topMostViewController: UIViewController? {
-        return UIApplication.shared.keyWindow?.rootViewController?.topMostViewController
+        return SideMenuManager.rootViewController?.topMostViewController
     }
 }
 

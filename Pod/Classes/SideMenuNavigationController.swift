@@ -89,7 +89,8 @@ public struct SideMenuSettings: Model, InitializableStruct {
     public var enableTapToDismissGesture: Bool = true
     public var initialSpringVelocity: CGFloat = 1
     public var menuWidth: CGFloat = {
-        let appScreenRect = UIApplication.shared.keyWindow?.bounds ?? UIWindow().bounds
+//        let appScreenRect = UIApplication.shared.keyWindow?.bounds ?? UIWindow().bounds
+        let appScreenRect = UIScreen.main.bounds
         let minimumSize = min(appScreenRect.width, appScreenRect.height)
         return min(round(minimumSize * 0.75), 240)
     }()
